@@ -9,15 +9,15 @@ app.use((req, res, next) => {
   console.log('My first middleware end.');
 });
 
-app.use(express.static('publc'));
-
 app.use((req, res, next) => {
   console.log('My second middleware.');
   next();
   console.log('My second middleware end.');
 });
 
-app.get('/', (req, res) => {
+app.use(express.static('public'));
+
+app.get('/something', (req, res) => {
   console.log('This is the index route.');
   res.send('hi');
 });
